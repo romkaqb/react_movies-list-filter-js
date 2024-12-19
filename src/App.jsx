@@ -1,15 +1,15 @@
 import './App.scss';
+import { useState } from 'react';
 import { MoviesList } from './components/MoviesList';
 import moviesFromServer from './api/movies.json';
-import { useState } from 'react';
 
 export const App = () => {
   const [query, setQuery] = useState('');
 
   const visibleMovies = moviesFromServer.filter(
-    ({ title, description}) =>
+    ({ title, description }) =>
       title.toLowerCase().includes(query.toLowerCase().trim()) ||
-      description.toLowerCase().includes(query.toLowerCase().trim())
+      description.toLowerCase().includes(query.toLowerCase().trim()),
   );
 
   return (
@@ -29,7 +29,7 @@ export const App = () => {
                 className="input"
                 placeholder="Type search word"
                 value={query}
-                onChange={(event) => setQuery(event.currentTarget.value)}
+                onChange={event => setQuery(event.currentTarget.value)}
               />
             </div>
           </div>
